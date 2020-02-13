@@ -7,20 +7,19 @@ export const userPostFetch = user => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      body: JSON.stringify({ user }),
+      body: JSON.stringify({ user })
     })
       .then(resp => resp.json())
       .then(data => {
         if (data.message) {
           toast.notify(data.message, {
-            position: 'bottom-right',
+            position: 'bottom-right'
           })
         } else {
           localStorage.setItem('token', data.jwt)
-          console.log(data)
-          dispatch(loginUser(data.user, data.jwt))
+          dispatch(loginUser(data.user))
         }
       })
   }
@@ -28,7 +27,7 @@ export const userPostFetch = user => {
 
 const loginUser = userObj => ({
   type: LOGIN_USER,
-  payload: userObj,
+  payload: userObj
 })
 
 export const userLoginFetch = user => {
@@ -37,15 +36,15 @@ export const userLoginFetch = user => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      body: JSON.stringify({ user }),
+      body: JSON.stringify({ user })
     })
       .then(resp => resp.json())
       .then(data => {
         if (data.message) {
           toast.notify(data.message, {
-            position: 'bottom-right',
+            position: 'bottom-right'
           })
         } else {
           localStorage.setItem('token', data.jwt)
@@ -64,8 +63,8 @@ export const getProfileFetch = () => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       })
         .then(resp => resp.json())
         .then(data => {
