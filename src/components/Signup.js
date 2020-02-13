@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userLoginFetch } from '../actions/authActions'
+import { userPostFetch } from '../actions/authActions'
 
-class Login extends Component {
+class Signup extends Component {
   state = {
     email: '',
     password: '',
@@ -16,18 +16,18 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.userLoginFetch(this.state)
+    this.props.userPostFetch(this.state)
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Login</h2>
+        <h2>Create Account</h2>
 
         <label>Email</label>
         <input
           name="email"
-          placeholder="Enter Email"
+          placeholder="Email"
           value={this.state.email}
           onChange={this.handleChange}
         />
@@ -37,7 +37,7 @@ class Login extends Component {
         <input
           type="password"
           name="password"
-          placeholder="Enter Password"
+          placeholder="Password"
           value={this.state.password}
           onChange={this.handleChange}
         />
@@ -50,7 +50,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo)),
+  userPostFetch: userInfo => dispatch(userPostFetch(userInfo)),
 })
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Signup)

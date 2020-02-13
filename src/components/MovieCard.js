@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, CardTitle, CardBody, CardText, Badge } from 'reactstrap'
+import { Card, CardImg, CardTitle, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import genreMap from '../data/movieGenres'

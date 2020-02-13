@@ -1,9 +1,12 @@
-import { SET_MOVIES } from '../actions/actionTypes'
+import { LOGIN_USER } from '../actions/actionTypes'
 
-export default (state = [], action) => {
+const initialState = {
+  currentUser: {},
+}
+export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case SET_MOVIES:
-      return [...action.payload]
+    case LOGIN_USER:
+      return { ...state, currentUser: action.payload }
     default:
       return state
   }

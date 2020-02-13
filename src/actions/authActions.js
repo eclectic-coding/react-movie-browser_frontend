@@ -1,11 +1,80 @@
-import { SET_MOVIES } from './actionTypes'
+import { LOGIN_USER } from './actionTypes'
+import toast from 'toasted-notes'
 
-export const fetchMovies = () => {
+export const userPostFetch = user => {
   return dispatch => {
-    return fetch('http://localhost:3000/movies')
+    return fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    })
       .then(resp => resp.json())
-      .then(movies => {
-        dispatch({ type: SET_MOVIES, payload: movies })
+      .then(data => {
+        if (data.message) {
+          toast.notify(data.message, {
+            position: 'bottom-right',
+          })
+        } else {
+          localStorage.setItem('token', data.jwt)
+          console.log(data)
+          dispatch(loginUser(data.user, data.jwt))
+        }
       })
+  }
+}
+
+const loginUser = userObj => ({
+  type: LOGIN_USER,
+  payload: userObj,
+})
+
+export const userLoginFetch = user => {
+  return dispatch => {
+    return fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ user }),
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.message) {
+          toast.notify(data.message, {
+            position: 'bottom-right',
+          })
+        } else {
+          localStorage.setItem('token', data.jwt)
+          dispatch(loginUser(data.user))
+        }
+      })
+  }
+}
+
+export const getProfileFetch = () => {
+  return dispatch => {
+    const token = localStorage.token
+    if (token) {
+      return fetch('http://localhost:3000/api/v1/profile', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.message) {
+            localStorage.removeItem('token')
+          } else {
+            dispatch(loginUser(data.user))
+          }
+        })
+    }
   }
 }
