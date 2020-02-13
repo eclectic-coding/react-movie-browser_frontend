@@ -16,12 +16,15 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    const { history } = this.props
     this.props.userLoginFetch(this.state)
+    history.push('/profile')
   }
 
   render() {
+    console.log(this.props)
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={event => this.handleSubmit(event)}>
         <h2>Login</h2>
 
         <label>Email</label>

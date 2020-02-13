@@ -1,4 +1,4 @@
-import { LOGIN_USER } from './actionTypes'
+import { LOGIN_USER, LOGOUT_USER } from './actionTypes'
 import toast from 'toasted-notes'
 
 export const userPostFetch = user => {
@@ -77,3 +77,7 @@ export const getProfileFetch = () => {
     }
   }
 }
+
+export const logoutUser = () => ({
+  type: LOGOUT_USER
+})
