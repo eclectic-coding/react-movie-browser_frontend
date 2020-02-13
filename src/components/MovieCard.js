@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, CardTitle, CardBody } from 'reactstrap'
+import { Card, CardImg } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import genreMap from '../data/movieGenres'
@@ -26,13 +26,13 @@ const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
           src={poster_path ? `${MOVIE_DB_IMAGE_URL.medium}${poster_path}` : noPhoto}
           alt={title}
         />
-        <CardBody>
+        <Card.Body>
           <Link to={`/movies/${id}`}>
             {average_vote > 0 && <span className="card-rating">{average_vote}</span>}
-            <CardTitle className="mb-1 mr-4">{title}</CardTitle>
+            <Card.Title className="mb-1 mr-4">{title}</Card.Title>
             {genresStr && <p className="small mb-0">{genresStr}</p>}
           </Link>
-        </CardBody>
+        </Card.Body>
       </Card>
     </div>
   )

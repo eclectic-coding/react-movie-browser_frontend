@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getProfileFetch, logoutUser } from '../actions/authActions'
-import { Container } from 'reactstrap'
+import { Container } from 'react-bootstrap'
 
 import Layout from './Layout'
 import Home from '../containers/Home'
