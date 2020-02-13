@@ -36,7 +36,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getProfileFetch: () => dispatch(getProfileFetch()),
+  getProfileFetch: () => dispatch(getProfileFetch())
 })
 
 export default connect(null, mapDispatchToProps)(App)

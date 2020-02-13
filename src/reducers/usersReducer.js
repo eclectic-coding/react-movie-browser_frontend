@@ -1,7 +1,7 @@
 import { LOGIN_USER } from '../actions/actionTypes'
 
 const initialState = {
-  currentUser: {},
+  currentUser: {}
 }
 export default function reducer(state = initialState, action) {
   switch (action.type) {

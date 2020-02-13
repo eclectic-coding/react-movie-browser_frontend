@@ -58,7 +58,7 @@ export const getProfileFetch = () => {
   return dispatch => {
     const token = localStorage.token
     if (token) {
-      return fetch('http://localhost:3000/api/v1/profile', {
+      return fetch('http://localhost:3000/profile', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

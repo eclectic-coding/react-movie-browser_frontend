@@ -5,12 +5,12 @@ import { userLoginFetch } from '../actions/authActions'
 class Login extends Component {
   state = {
     email: '',
-    password: '',
+    password: ''
   }
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
@@ -50,7 +50,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo)),
+  userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
 })
 
 export default connect(null, mapDispatchToProps)(Login)

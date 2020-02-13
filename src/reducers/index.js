@@ -4,5 +4,5 @@ import users from './usersReducer'
 
 export default combineReducers({
   movies,
-  users,
+  users
 })
