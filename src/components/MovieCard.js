@@ -29,7 +29,7 @@ const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
         <Card.Body>
           <Link to={`/movies/${id}`}>
             {average_vote > 0 && <span className="card-rating">{average_vote}</span>}
-            <Card.Title className="mb-1 mr-4">{title}</Card.Title>
+            <h6 className="mb-1 mr-4">{title}</h6>
             {genresStr && <p className="small mb-0">{genresStr}</p>}
           </Link>
         </Card.Body>
