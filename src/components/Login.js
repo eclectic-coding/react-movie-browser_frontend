@@ -37,7 +37,7 @@ class Login extends Component {
                 value={this.state.email}
                 onChange={this.handleChange}
                 required
-                autofocus
+                autoFocus
               />
             </Form.Group>
 
