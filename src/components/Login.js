@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userLoginFetch } from '../actions/authActions'
+import { Card, Form } from 'react-bootstrap'
 
 class Login extends Component {
   state = {
@@ -22,32 +23,40 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.currentUser)
     return (
-      <form onSubmit={event => this.handleSubmit(event)}>
-        <h2>Login</h2>
+      <div className="min-vh-100 col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <Card className="m-5 p-5 bg-dark text-light" style={{ width: '25rem' }}>
+          <form onSubmit={event => this.handleSubmit(event)}>
+            <Card.Title className="text-center">Login</Card.Title>
+            <Form.Group>
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                name="email"
+                placeholder="Enter Email"
+                value={this.state.email}
+                onChange={this.handleChange}
+                required
+                autofocus
+              />
+            </Form.Group>
 
-        <label>Email</label>
-        <input
-          name="email"
-          placeholder="Enter Email"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <br />
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                required
+              />
+            </Form.Group>
 
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <br />
-
-        <input type="submit" />
-      </form>
+            <input type="submit" />
+          </form>
+        </Card>
+      </div>
     )
   }
 }

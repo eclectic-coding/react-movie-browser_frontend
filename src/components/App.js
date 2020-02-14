@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getProfileFetch, logoutUser } from '../actions/authActions'
-import { Container } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import bgImg from '../assets/images/bg.jpg'
 
-import Layout from './Layout'
 import Home from '../containers/Home'
+import Menubar from '../components/Menubar'
+
 import MovieList from '../containers/MovieList'
 import Signup from './Signup'
 import Login from './Login'
@@ -23,22 +25,30 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <Layout>
+      <div
+        style={{
+          background: `url(${bgImg})`,
+          backgroundCover: 'cover !important',
+          marginTop: '10rem'
+        }}
+        className="min-vh-100"
+      >
         <Router>
-          <Container>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/movies" component={MovieList} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/profile" component={Profile} />
-            </Switch>
-
-            <button onClick={this.handleClick}>Log Out</button>
-          </Container>
+          <Menubar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/movies" component={MovieList} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/profile" component={Profile} />
+          </Switch>
+          {/*{this.state.users.currentUser.email ? (*/}
+          {/*  <Button onClick={this.handleClick}>Log Out</Button>*/}
+          {/*) : null}*/}
         </Router>
-      </Layout>
+      </div>
     )
   }
 }
