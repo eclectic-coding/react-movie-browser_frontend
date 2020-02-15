@@ -6,6 +6,7 @@ import { fetchMovies } from '../actions/movieActions'
 import MovieCard from '../components/MovieCard'
 // Styling Components
 import { Container } from 'react-bootstrap'
+import bgImg from '../assets/images/bg.jpg'
 
 class MovieList extends Component {
   componentDidMount() {
@@ -13,19 +14,26 @@ class MovieList extends Component {
   }
 
   render() {
-    console.log(this.props)
     const movies = this.props.movies
       .slice(0, 20)
       .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
-    console.log(movies)
 
     return (
-      <Container
-        className="d-flex flex-wrap justify-content-md-between justify-content-center"
-        style={{ marginTop: '10rem' }}
+      <div
+        className="bg-danger"
+        style={{
+          background: `url(${bgImg})`,
+          backgroundCover: 'cover !important',
+          paddingTop: '65px'
+        }}
       >
-        {movies}
-      </Container>
+        <Container
+          className="d-flex flex-wrap justify-content-md-between justify-content-center"
+          style={{ paddingTop: '2rem' }}
+        >
+          {movies}
+        </Container>
+      </div>
     )
   }
 }

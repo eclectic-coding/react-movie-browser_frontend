@@ -1,10 +1,10 @@
 import React from 'react'
 
-const MovieDetail = ({ title, average_vote }) => {
+const MovieDetail = ({ title }) => {
+  // console.log(this.props)
   return (
-    <div>
-      <h2>Title: {title}</h2>
-      <p>Average: {average_vote}</p>
+    <div className="text-black">
+      <div className="text-black">Title: {title}</div>
     </div>
   )
 }
