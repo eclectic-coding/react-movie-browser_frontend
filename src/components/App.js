@@ -7,22 +7,14 @@ import MovieList from '../containers/MovieList'
 import Signup from './Signup'
 import Login from './Login'
 import Profile from './Profile'
-// Style elements
-import bgImg from '../assets/images/bg.jpg'
 import MovieShow from '../containers/MovieShow'
+// Style elements
 
 class App extends Component {
   render() {
     console.log(this.props)
     return (
-      <div
-        style={{
-          background: `url(${bgImg})`,
-          backgroundCover: 'cover !important',
-          marginTop: '10rem'
-        }}
-        className="min-vh-100"
-      >
+      <div>
         <Router>
           <Menubar />
           <Switch>
