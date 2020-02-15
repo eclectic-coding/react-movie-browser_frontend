@@ -1,4 +1,4 @@
-import { SET_MOVIES } from './actionTypes'
+import { SET_MOVIES, GET_MOVIE } from './actionTypes'
 
 export const fetchMovies = () => {
   return dispatch => {
@@ -6,6 +6,16 @@ export const fetchMovies = () => {
       .then(resp => resp.json())
       .then(movies => {
         dispatch({ type: SET_MOVIES, payload: movies })
+      })
+  }
+}
+
+export const fetchMovieId = id => {
+  return dispatch => {
+    return fetch(`http://localhost:3000/movies/${id}`)
+      .then(resp => resp.json())
+      .then(movie => {
+        dispatch({ type: GET_MOVIE, payload: movie })
       })
   }
 }

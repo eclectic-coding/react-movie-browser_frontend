@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+// Redux
 import { connect } from 'react-redux'
 import { userLoginFetch } from '../actions/authActions'
-import { Card, Form } from 'react-bootstrap'
+// Styling Components
+import { Button, Card, Form } from 'react-bootstrap'
 
 class Login extends Component {
   state = {
@@ -52,8 +54,9 @@ class Login extends Component {
                 required
               />
             </Form.Group>
-
-            <input type="submit" />
+            <Button variant="warning" type="submit">
+              Submit
+            </Button>
           </form>
         </Card>
       </div>

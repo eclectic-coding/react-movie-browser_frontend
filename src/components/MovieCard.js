@@ -16,16 +16,17 @@ const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
       })
       .join(', ')
   }
-  console.log(genresStr)
   return (
     <div>
-      <Card className="movie-card">
-        <CardImg
-          top
-          width="100%"
-          src={poster_path ? `${MOVIE_DB_IMAGE_URL.medium}${poster_path}` : noPhoto}
-          alt={title}
-        />
+      <Card className="movie-card" id={id}>
+        <Link to={`/movies/${id}`}>
+          <CardImg
+            top
+            width="100%"
+            src={poster_path ? `${MOVIE_DB_IMAGE_URL.medium}${poster_path}` : noPhoto}
+            alt={title}
+          />
+        </Link>
         <Card.Body>
           <Link to={`/movies/${id}`}>
             {average_vote > 0 && <span className="card-rating">{average_vote}</span>}

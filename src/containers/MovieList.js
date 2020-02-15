@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+// Redux
 import { connect } from 'react-redux'
 import { fetchMovies } from '../actions/movieActions'
+// Components
 import MovieCard from '../components/MovieCard'
+// Styling Components
 import { Container } from 'react-bootstrap'
 
 class MovieList extends Component {
@@ -10,10 +13,11 @@ class MovieList extends Component {
   }
 
   render() {
+    console.log(this.props)
     const movies = this.props.movies
       .slice(0, 20)
-      .map((movie, index) => <MovieCard key={index} movie={movie} {...movie} />)
-    console.log(this.props.movies.id)
+      .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
+    console.log(movies)
 
     return (
       <Container
@@ -33,4 +37,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { fetchMovies })(MovieList)
-// TODO - Add pagination

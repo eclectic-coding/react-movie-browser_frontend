@@ -9,6 +9,7 @@ import Login from './Login'
 import Profile from './Profile'
 // Style elements
 import bgImg from '../assets/images/bg.jpg'
+import MovieShow from '../containers/MovieShow'
 
 class App extends Component {
   render() {
@@ -26,10 +27,11 @@ class App extends Component {
           <Menubar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/movies" component={MovieList} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route path="/profile" component={Profile} />
+            <Route exact path="/movies" component={MovieList} />
+            <Route exact path="/movies/:id" render={props => <MovieShow {...props} />} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
         </Router>
       </div>
