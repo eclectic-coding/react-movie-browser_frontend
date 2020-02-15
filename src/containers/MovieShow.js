@@ -28,7 +28,7 @@ class MovieShow extends Component {
     ))
 
     return (
-      <Container style={{ marginTop: '10rem' }}>
+      <Container className="d-flex flex-column" style={{ marginTop: '10rem' }}>
         <h2>Movie Detail Container</h2>
         {movie}
       </Container>
