@@ -22,7 +22,7 @@ class Menubar extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <Navbar className="fixed-top" bg="dark" expand="lg">
+      <Navbar className="fixed-top z-10" bg="dark" expand="lg">
         <Container>
           <Navbar.Brand href="/">
             <FontAwesomeIcon
@@ -30,8 +30,10 @@ class Menubar extends React.Component {
               aria-hidden="false"
               className="text-warning brand-icon"
             />
-            <span>Movie Portal</span>
-          </Navbar.Brand>{' '}
+            <Navbar.Brand className="mx-4 pb-2 text-warning text-bold justify-content-center">
+              Movie Portal
+            </Navbar.Brand>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />{' '}
           <Navbar.Collapse id="basic-navbar-nav">
             <Form inline>
