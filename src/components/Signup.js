@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { userPostFetch } from '../actions/authActions'
+import { Button, Card, Form } from 'react-bootstrap'
+import bgImg from '../assets/images/bg.jpg'
+import { Link } from 'react-router-dom'
 
 class Signup extends Component {
   state = {
@@ -16,35 +19,71 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    const { history } = this.props
     this.props.userPostFetch(this.state)
+    history.push('/login')
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Create Account</h2>
+      <div
+        className="min-vh-100"
+        style={{
+          background: `url(${bgImg}) no-repeat center center fixed`,
+          backgroundCover: 'cover !important'
+        }}
+      >
+        <div
+          className="min-vh-100 col-sm-9 col-md-7 col-lg-5 mx-auto"
+          style={{ paddingTop: '100px' }}
+        >
+          <Card
+            className="m-5 py-5 px-4 bg-dark text-light"
+            style={{ width: '25rem', top: '100px' }}
+          >
+            <form onSubmit={this.handleSubmit}>
+              <Card.Title
+                className="text-center text-warning text-bold"
+                style={{ fontSize: '2rem' }}
+              >
+                Create Account
+              </Card.Title>
 
-        <label>Email</label>
-        <input
-          name="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <br />
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  name="email"
+                  placeholder="Enter Email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                  autoFocus
+                />
+              </Form.Group>
 
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <br />
-
-        <input type="submit" />
-      </form>
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                />
+              </Form.Group>
+              <Button variant="warning" className="mr-3" type="submit">
+                Create account
+              </Button>
+              <Button variant="warning" type="submit">
+                <Link to="/movies" style={{ color: 'inherit' }}>
+                  Cancel
+                </Link>
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </div>
     )
   }
 }
