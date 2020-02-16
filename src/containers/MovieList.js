@@ -17,7 +17,6 @@ class MovieList extends Component {
     const movies = this.props.movies
       .slice(0, 20)
       .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
-
     return (
       <div
         className="bg-danger"

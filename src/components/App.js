@@ -8,11 +8,13 @@ import Signup from './Signup'
 import Login from './Login'
 import Profile from './Profile'
 import MovieShow from '../containers/MovieShow'
-// Style elements
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div>
         <Router>
@@ -20,7 +22,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/movies" component={MovieList} />
-            <Route exact path="/movies/:id" render={props => <MovieShow {...props} />} />
+            <Route
+              exact
+              path="/movies/:id"
+              render={props => <MovieShow {...props} movie={this.props.movies} />}
+            />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />

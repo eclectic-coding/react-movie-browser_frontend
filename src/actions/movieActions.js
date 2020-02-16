@@ -14,8 +14,9 @@ export const fetchMovieId = id => {
   return dispatch => {
     return fetch(`http://localhost:3000/movies/${id}`)
       .then(resp => resp.json())
-      .then(movie => {
-        dispatch({ type: GET_MOVIE, payload: movie })
+      .then(movies => {
+        dispatch({ type: GET_MOVIE, payload: movies })
+        // console.log(movies)
       })
   }
 }
