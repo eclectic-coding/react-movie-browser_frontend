@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink as NavLinkRouter } from 'react-router-dom'
+import NavLinkRouter from 'react-router-dom/NavLink'
 // Redux
 import { connect } from 'react-redux'
 import { getProfileFetch, logoutUser } from '../actions/authActions'
@@ -46,18 +46,20 @@ class Menubar extends React.Component {
             </Form>
           </Navbar.Collapse>
           <Nav variant="light" className="mr-auto">
-            <Nav.Link to="/movies" className="text-white mx-3">
-              <FontAwesomeIcon icon={faListAlt} className="mr-2" />
-              Movies
-            </Nav.Link>
+            <Nav.Item>
+              <NavLinkRouter to="/movies" className="text-white mx-3">
+                <FontAwesomeIcon icon={faListAlt} className="mr-2" />
+                Movies
+              </NavLinkRouter>
+            </Nav.Item>
             {this.props.currentUser.data ? (
-              <Nav.Link to="/movies" className="text-white mx-3">
+              <NavLinkRouter to="/movies" className="text-white mx-3">
                 <FontAwesomeIcon
                   icon={faListAlt}
                   className="mr-2 font-weight-light text-gray-300"
                 />
                 MY WATCHLIST
-              </Nav.Link>
+              </NavLinkRouter>
             ) : null}
           </Nav>
           <Nav.Item>
