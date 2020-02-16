@@ -6,7 +6,7 @@ import { getProfileFetch, logoutUser } from '../actions/authActions'
 // Styling
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faVideo } from '@fortawesome/free-solid-svg-icons'
+import { faVideo, faListAlt } from '@fortawesome/free-solid-svg-icons'
 
 class Menubar extends React.Component {
   componentDidMount = () => {
@@ -22,7 +22,7 @@ class Menubar extends React.Component {
   render() {
     console.log(this.props)
     return (
-      <Navbar className="fixed-top z-10" bg="dark" expand="lg">
+      <Navbar className="fixed-top z-10" bg="dark" expand="lg" variant="light">
         <Container>
           <Navbar.Brand href="/">
             <FontAwesomeIcon
@@ -34,18 +34,32 @@ class Menubar extends React.Component {
               Movie Portal
             </Navbar.Brand>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />{' '}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Form inline>
-              {' '}
               <FormControl
                 disabled
                 type="text"
                 placeholder="Future Search Controller"
                 className="mr-sm-2"
-              />{' '}
-            </Form>{' '}
+              />
+            </Form>
           </Navbar.Collapse>
+          <Nav variant="light" className="mr-auto">
+            <Nav.Link to="/movies" className="text-white mx-3">
+              <FontAwesomeIcon icon={faListAlt} className="mr-2" />
+              Movies
+            </Nav.Link>
+            {this.props.currentUser.data ? (
+              <Nav.Link to="/movies" className="text-white mx-3">
+                <FontAwesomeIcon
+                  icon={faListAlt}
+                  className="mr-2 font-weight-light text-gray-300"
+                />
+                MY WATCHLIST
+              </Nav.Link>
+            ) : null}
+          </Nav>
           <Nav.Item>
             {this.props.currentUser.data ? (
               <NavLinkRouter to="/" exact>
