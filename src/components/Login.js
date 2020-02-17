@@ -71,6 +71,7 @@ class Login extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
+
               <Button variant="warning" className="mr-3" type="submit">
                 Login
               </Button>
@@ -91,6 +92,10 @@ class Login extends Component {
     )
   }
 }
+
+// const mapStateToProps = state => ({
+//   user
+// })
 
 const mapDispatchToProps = dispatch => ({
   userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
