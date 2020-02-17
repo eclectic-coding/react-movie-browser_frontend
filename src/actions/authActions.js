@@ -1,5 +1,6 @@
 import { LOGIN_USER, LOGOUT_USER } from './actionTypes'
 import toast from 'toasted-notes'
+import 'toasted-notes/src/styles.css'
 
 export const userPostFetch = user => {
   return dispatch => {
