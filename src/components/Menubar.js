@@ -20,7 +20,6 @@ class Menubar extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <Navbar className="fixed-top z-10" bg="dark" expand="lg" variant="light">
         <Container>
@@ -53,7 +52,7 @@ class Menubar extends React.Component {
               </NavLinkRouter>
             </Nav.Item>
             {this.props.currentUser.data ? (
-              <NavLinkRouter to="/movies" className="text-white mx-3">
+              <NavLinkRouter to="/watchlists" className="text-white mx-3">
                 <FontAwesomeIcon
                   icon={faListAlt}
                   className="mr-2 font-weight-light text-gray-300"
