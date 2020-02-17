@@ -1,5 +1,5 @@
 import React from 'react'
-// import genreMap from '../data/movieGenres'
+import genreMap from '../data/movieGenres'
 // Styling Components
 import { Badge, Button, Container } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,26 +19,28 @@ const MovieDetail = ({
   overview,
   poster_path,
   release_date,
+  genre_ids,
+  runtime,
   tagline
 }) => {
-  // const getDurationStr = mins => {
-  //   let h = Math.floor(mins / 60)
-  //   let m = mins % 60
-  //   m = m < 10 ? '0' + m : m
-  //   return `${h}h ${m}m`
-  // }
+  const getDurationStr = mins => {
+    let h = Math.floor(mins / 60)
+    let m = mins % 60
+    m = m < 10 ? '0' + m : m
+    return `${h}h ${m}m`
+  }
 
-  // let genresArr = []
-  // console.log(genre_ids)
-  // if (genre_ids) {
-  //   genresArr = genre_ids.map(gid => {
-  //     console.log(gid)
-  //     const item = genreMap.genres.find(item => item.id === gid)
-  //     console.log(item.name)
-  //     genresArr.push(item.name)
-  //     return genresArr
-  //   })
-  // }
+  let genresArr = []
+  console.log(genre_ids)
+  if (genre_ids) {
+    genresArr = genre_ids.map(gid => {
+      console.log(gid)
+      const item = genreMap.genres.find(item => item.id === gid)
+      console.log(item.name)
+      genresArr.push(item.name)
+      return genresArr
+    })
+  }
 
   return (
     <div
@@ -74,14 +76,14 @@ const MovieDetail = ({
               {overview}
             </p>
 
-            {/*<div>*/}
-            {/*  <span className="mr-2">Genres:</span>*/}
-            {/*  {genresArr[0].map(item => (*/}
-            {/*    <Badge variant="warning" className="mb-1" key={item}>*/}
-            {/*      {item}*/}
-            {/*    </Badge>*/}
-            {/*  ))}*/}
-            {/*</div>*/}
+            <div>
+              <span className="mr-2">Genres:</span>
+              {genresArr[0].map(item => (
+                <Badge variant="warning" className="mb-1" key={item}>
+                  {item}
+                </Badge>
+              ))}
+            </div>
 
             <div className="movie__stat d-flex justify-content-between align-items center">
               {release_date && (
@@ -91,13 +93,13 @@ const MovieDetail = ({
                 </div>
               )}
               <div>
-                <FontAwesomeIcon icon={faHistory} />
+                <FontAwesomeIcon icon={faHistory} className="mr-2" />
                 Duration:
-                {/*{getDurationStr(runtime)}*/}
+                {getDurationStr(runtime)}
               </div>
               <div>
                 <FontAwesomeIcon icon={faMoneyBillAlt} className="mr-2" />
-                Budget: ${budget}
+                Budget: ${budget.toLocaleString()}
               </div>
             </div>
           </div>
