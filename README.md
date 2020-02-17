@@ -54,21 +54,22 @@ Give an example
 
 ## TODO
 
-- [ ] Fix Genre, Duration, and Budget in details box.
-- [ ] Fix Toast styling.
-- [ ] Logged in logic to watchlist button on detail page
-- [ ] Add Watchlist to rails routing
+- [X] Fix Genre, Duration, and Budget in details box.
+- [X] Fix Toast styling.
+- [ ] Watchlist Button component
+- [X] Add Watchlist to rails routing
 - [ ] Add Watchlist table interface table in user profile area
-  - [ ] Add watchlist button to menubar
-  - [ ] Conditional ternary in Movie Detail for watchlist
+  - [X] Add watchlist button to menubar
+  - [X] Conditional ternary in Movie Detail for watchlist
 - [ ] Add protected route
+- [ ] Add React-router back navigation
 - [ ] Add Cast section panel to Movie Details page
 - [ ] Add Recommended section to Movie Details section
-- [ ] Add React-router back navigation
 
 **Bugs**
 - [ ] Fix log out redirect to root route
 - [ ] Flash waiting for movie list to populate. Look into fix. Maybe with Suspense and lazy load.
+
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
