@@ -1,17 +1,14 @@
 import React from 'react'
 import genreMap from '../data/movieGenres'
 // Styling Components
-import { Badge, Button, Container } from 'react-bootstrap'
+import { Badge, Container } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faBookmark,
-  faClock,
-  faHistory,
-  faMoneyBillAlt
-} from '@fortawesome/free-solid-svg-icons'
+import { faClock, faHistory, faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
 import { MOVIE_DB_IMAGE_URL } from '../data/apiMovies'
+import WatchlistButton from './WatchlistButton'
 
 const MovieDetail = ({
+  id,
   title,
   average_vote,
   backdrop_path,
@@ -31,12 +28,9 @@ const MovieDetail = ({
   }
 
   let genresArr = []
-  console.log(genre_ids)
   if (genre_ids) {
     genresArr = genre_ids.map(gid => {
-      console.log(gid)
       const item = genreMap.genres.find(item => item.id === gid)
-      console.log(item.name)
       genresArr.push(item.name)
       return genresArr
     })
@@ -67,10 +61,7 @@ const MovieDetail = ({
               <div title="Rating" className="movie__rating">
                 {average_vote}
               </div>
-              <Button variant="success">
-                <FontAwesomeIcon icon={faBookmark} className="mr-2" />
-                Add to my Watchlist
-              </Button>
+              <WatchlistButton movie={id} />
             </div>
             <p className="my-5" style={{ fontSize: '1.2rem' }}>
               {overview}

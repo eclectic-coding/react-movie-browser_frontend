@@ -16,7 +16,6 @@ export const fetchMovieId = id => {
       .then(resp => resp.json())
       .then(movies => {
         dispatch({ type: GET_MOVIE, payload: movies })
-        // console.log(movies)
       })
   }
 }
