@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 // Styling Components
 import { Button, Container } from 'react-bootstrap'
-import bgImg from '../assets/images/bg.jpg'
+import bgImg from '../assets/images/home_bg.jpg'
 
 const Home = () => {
   return (
