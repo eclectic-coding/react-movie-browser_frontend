@@ -50,6 +50,7 @@ export const userLoginFetch = user => {
         } else {
           localStorage.setItem('token', data.jwt)
           dispatch(loginUser(data.user))
+          console.log(data.user)
         }
       })
   }

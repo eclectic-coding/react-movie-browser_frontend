@@ -8,4 +8,4 @@ export const LOGOUT_USER = 'LOGOUT_USER'
 export const GET_USER = 'GET_USER'
 
 // WATCHLIST Action types
-export const ADD_MOVIE_WATCHLIST = 'ADD_MOVIE_WATCHLIST'
+export const GET_WATCHLIST = 'GET_WATCHLIST'

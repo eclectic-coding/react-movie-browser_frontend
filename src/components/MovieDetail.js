@@ -8,6 +8,7 @@ import { MOVIE_DB_IMAGE_URL } from '../data/apiMovies'
 import WatchlistButton from './WatchlistButton'
 
 const MovieDetail = ({
+  movie,
   id,
   title,
   average_vote,
@@ -61,7 +62,7 @@ const MovieDetail = ({
               <div title="Rating" className="movie__rating">
                 {average_vote}
               </div>
-              <WatchlistButton movie={id} />
+              <WatchlistButton movie={movie} />
             </div>
             <p className="my-5" style={{ fontSize: '1.2rem' }}>
               {overview}

@@ -23,7 +23,7 @@ class Login extends Component {
     event.preventDefault()
     const { history } = this.props
     this.props.userLoginFetch(this.state)
-    history.push('/profile')
+    history.push('/movies')
   }
 
   render() {

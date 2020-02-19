@@ -56,6 +56,7 @@ Give an example
 
 - [X] Fix Genre, Duration, and Budget in details box.
 - [X] Fix Toast styling.
+- [ ] Add filter button bar
 - [ ] Watchlist Button component
 - [X] Add Watchlist to rails routing
 - [ ] Add Watchlist table interface table in user profile area

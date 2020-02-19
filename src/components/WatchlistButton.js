@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
-// Styling Components
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+// Redux
 import { connect } from 'react-redux'
 import { getWatchlist } from '../actions/watchlistActions'
 
+// Styling Components
+import { Button, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+
 class WatchlistButton extends Component {
   componentDidMount() {
-    const { currentUser, watchList } = this.props
-    // const userId = currentUser.data.id
-    // if (userId && !watchList) {
-    //   console.log('Good job - IF')
-    // }
+    const { currentUser, watchList, getWatchlist } = this.props
   }
   handleWatchlistClick = e => {
-    const { movie, currentUser } = this.props
-    if (!currentUser.data) {
-      console.log(`Nice click you NOBODY`)
+    const { movie, currentUser, watchlists } = this.props
+    let userId
+    if (currentUser === undefined) {
+      console.log('Rut Roh')
+    } else {
+      userId = currentUser.data.id
     }
+    this.props.getWatchlist(userId)
   }
 
   renderTooltip(props) {
@@ -26,6 +28,18 @@ class WatchlistButton extends Component {
   }
 
   render() {
+    const { movie, currentUser, watchlists } = this.props
+    let userId
+    if (currentUser === undefined) {
+      return
+    } else {
+      userId = currentUser.data.id
+    }
+
+    // const isInWatchList = userId && watchlists.data.find(item => item.id === movie.id)
+
+    console.log(movie)
+
     return (
       <div>
         {this.props.currentUser.data ? (
@@ -64,7 +78,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.users.currentUser
+    currentUser: state.users.currentUser,
+    watchlists: state.watchlists
   }
 }
 

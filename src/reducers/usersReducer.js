@@ -12,7 +12,10 @@ export default function reducer(
     case LOGOUT_USER:
       return { ...state, currentUser: {} }
     case GET_USER:
-      return { ...state, currentUser: action.payload }
+      return {
+        ...state,
+        currentUser: action.payload
+      }
     default:
       return state
   }
