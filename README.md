@@ -1,36 +1,36 @@
-# Project Title
+
+# React Movie Browser
+
+<img src="admission.jpg" alt="" style="zoom:50%;" />
 
 One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+This is a Fullstack app and this repository is only the React frontend. The Ruby on Rails API backend is available [here]().
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+**Backend Setup**
 
-Say what the step will be
-
+Clone the backend repository to your computer:
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+git clone git@github.com:eclectic-coding/react-movie-browser_backend.git
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+The Rails application has a few prerequisites:
+* Postgres database
+* Movie API (TMDB) and you will need to get an [API key](https://www.themoviedb.org/).
+
+The application is designed to secure the API key, and my local postgres development user credentials using [Rails Credentials](https://www.mirrorcommunications.com/blog/using-credentials-in-rails-5-2-for-your-database-and-user-password). You will need to set this up before starting the server.
+
+Clone the frontend from this repository to your computer:
+```
+git clone git@github.com:eclectic-coding/react-movie-browser_frontend.git
+```
+
 
 ## Running the tests
 
@@ -54,8 +54,6 @@ Give an example
 
 ## TODO
 
-- [X] Fix Genre, Duration, and Budget in details box.
-- [X] Fix Toast styling.
 - [ ] Add filter button bar
 - [ ] Watchlist Button component
 - [X] Add Watchlist to rails routing
