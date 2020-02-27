@@ -3,10 +3,9 @@ import NavLinkRouter from 'react-router-dom/NavLink'
 // Redux
 import { connect } from 'react-redux'
 import { getProfileFetch, logoutUser } from '../actions/authActions'
-import { searchMovieTitle } from '../actions/movieActions'
 
 // Styling
-import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVideo, faListAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -35,17 +34,6 @@ class Menubar extends React.Component {
               Movie Portal
             </Navbar.Brand>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Form inline>
-              <FormControl
-                disabled
-                type="text"
-                placeholder="Future Search Controller"
-                className="mr-sm-2"
-              />
-            </Form>
-          </Navbar.Collapse>
           <Nav variant="light" className="mr-auto">
             <Nav.Item>
               <NavLinkRouter to="/movies" className="text-white mx-3">
@@ -86,8 +74,7 @@ class Menubar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.users.currentUser,
-  filters: state.filters
+  currentUser: state.users.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
