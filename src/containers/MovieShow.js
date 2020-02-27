@@ -12,10 +12,9 @@ class MovieShow extends Component {
   }
 
   render() {
-    console.log(this.props)
     const movies = this.props.movies
       .slice(0, 1)
-      .map((movie, index) => <MovieDetail key={movie.id} movie={movie} {...movie} />)
+      .map((movie, index) => <MovieDetail key={movie.id} {...movie} />)
 
     return <div>{movies}</div>
   }
