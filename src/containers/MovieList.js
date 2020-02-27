@@ -1,25 +1,37 @@
 import React, { Component } from 'react'
+import ReactPaginate from 'react-paginate'
 // Redux
 import { connect } from 'react-redux'
 import { fetchMovies } from '../actions/movieActions'
 // Components
 import MovieCard from '../components/MovieCard'
 // Styling Components
-import {
-  Button,
-  ButtonGroup,
-  Container,
-  Form,
-  FormControl,
-  Pagination
-} from 'react-bootstrap'
+import { Button, ButtonGroup, Container, FormControl } from 'react-bootstrap'
 
 class MovieList extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     this.props.fetchMovies()
   }
 
+  handleOnPageClick = data => {
+    let selected = data.selected + 1
+    console.log(selected)
+    let offset = Math.ceil(selected * 20)
+    console.log(offset)
+    console.log(this.props.movies)
+    const movies = this.props.movies
+      .slice(data.selected * 20, offset)
+      .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
+    console.log(movies)
+  }
+
   render() {
+    // const pageCount = Math.ceil(this.props.movies.length / 20)
+    console.log(this.props.pageCount)
     const movies = this.props.movies
       .slice(0, 20)
       .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
@@ -46,11 +58,29 @@ class MovieList extends Component {
               className="mb-5 col-4"
             />
           </div>
-          <div className="d-flex flex-wrap justify-content-md-between justify-content-center">
+          <div
+            id="movie-container"
+            className="d-flex flex-wrap justify-content-md-between justify-content-center"
+          >
             {movies}
           </div>
 
-          <div className="d-flex flex-wrap justify-content-center py-5"></div>
+          <div className="d-flex flex-wrap justify-content-center py-5">
+            <ReactPaginate
+              previousLabel="&larr;"
+              nextLabel="&rarr;"
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={this.props.pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handleOnPageClick}
+              disableInitialCallback={true}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'}
+            />
+          </div>
         </Container>
       </div>
     )
@@ -58,8 +88,10 @@ class MovieList extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    movies: state.movies
+    movies: state.movies,
+    pageCount: Math.ceil(state.movies.length / 20)
   }
 }
 
