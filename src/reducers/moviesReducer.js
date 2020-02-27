@@ -1,4 +1,4 @@
-import { GET_MOVIE, SET_MOVIES } from '../actions/actionTypes'
+import { GET_MOVIE, SEARCH_MOVIES, SET_MOVIES } from '../actions/actionTypes'
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export default (state = [], action) => {
       return [...action.payload]
     case GET_MOVIE:
       return [action.payload]
+    case SEARCH_MOVIES:
+      return {
+        ...state,
+        text: action.text
+      }
     default:
       return state
   }
