@@ -3,7 +3,7 @@
 
 <img src="admission.jpg" alt="" style="zoom:50%;" />
 
-This application is a rearch site for Movies past and present, to provide the user with tools to be informed in their entertainment choices.
+This application is a research site for Movies past and present, to provide the user with tools to be informed in their entertainment choices.
 
 ## Getting Started
 
@@ -46,6 +46,7 @@ yarn dev
 - [ ] Add filter button bar
 - [ ] Abstract user action/reducer to provide `userId`
 - [ ] Convert all movie `id` calls to use `movie_id` instead of DB table row `id`
+- [ ] Add pagination to Movie List
 - [ ] Watchlist Button component
 - [X] Add Watchlist to rails routing
 - [ ] Add Watchlist table interface table in user profile area
