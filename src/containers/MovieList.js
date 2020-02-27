@@ -5,7 +5,14 @@ import { fetchMovies } from '../actions/movieActions'
 // Components
 import MovieCard from '../components/MovieCard'
 // Styling Components
-import { Container } from 'react-bootstrap'
+import {
+  Button,
+  ButtonGroup,
+  Container,
+  Form,
+  FormControl,
+  Pagination
+} from 'react-bootstrap'
 
 class MovieList extends Component {
   componentDidMount() {
@@ -18,11 +25,32 @@ class MovieList extends Component {
       .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
     return (
       <div className="bg-danger background__cover">
-        <Container
-          className="d-flex flex-wrap justify-content-md-between justify-content-center"
-          style={{ paddingTop: '2rem' }}
-        >
-          {movies}
+        <Container style={{ paddingTop: '2rem' }}>
+          <div className="d-flex flex-wrap justify-content-md-between justify-content-center">
+            <ButtonGroup aria-label="Sort movies" className="mb-5 col-4">
+              <Button variant="warning" disabled>
+                Popular
+              </Button>
+              <Button variant="outline-warning" disabled>
+                Latest
+              </Button>
+              <Button variant="outline-warning" disabled>
+                Top Rated
+              </Button>
+            </ButtonGroup>
+
+            <FormControl
+              disabled
+              type="text"
+              placeholder="Disabled - Future Search for movie title"
+              className="mb-5 col-4"
+            />
+          </div>
+          <div className="d-flex flex-wrap justify-content-md-between justify-content-center">
+            {movies}
+          </div>
+
+          <div className="d-flex flex-wrap justify-content-center py-5"></div>
         </Container>
       </div>
     )

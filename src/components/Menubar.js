@@ -3,6 +3,8 @@ import NavLinkRouter from 'react-router-dom/NavLink'
 // Redux
 import { connect } from 'react-redux'
 import { getProfileFetch, logoutUser } from '../actions/authActions'
+import { searchMovieTitle } from '../actions/movieActions'
+
 // Styling
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -84,7 +86,8 @@ class Menubar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.users.currentUser
+  currentUser: state.users.currentUser,
+  filters: state.filters
 })
 
 const mapDispatchToProps = dispatch => ({

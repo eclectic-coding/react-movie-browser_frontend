@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchMovieId } from '../actions/movieActions'
 // Components
 import MovieDetail from '../components/MovieDetail'
+import { Form, FormControl } from 'react-bootstrap'
 
 class MovieShow extends Component {
   componentDidMount() {
@@ -16,7 +17,19 @@ class MovieShow extends Component {
       .slice(0, 1)
       .map((movie, index) => <MovieDetail key={movie.id} {...movie} />)
 
-    return <div>{movies}</div>
+    return (
+      <div>
+        <Form inline>
+          <FormControl
+            disabled
+            type="text"
+            placeholder="Future Search Controller"
+            className="mr-sm-2"
+          />
+        </Form>
+        {movies}
+      </div>
+    )
   }
 }
 
