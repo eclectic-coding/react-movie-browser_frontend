@@ -66,14 +66,11 @@ const MovieDetail = ({
               <div title="Rating" className="movie__rating">
                 {average_vote}
               </div>
-              <Button
-                variant="success"
-                id="watchlist-btn"
-                onClick={e => this.handleWatchlistClick(e)}
-              >
+              <Button disabled variant="success">
                 <FontAwesomeIcon icon={faBookmark} className="mr-2" /> Add to my Watchlist
               </Button>
             </div>
+
             <p className="my-5" style={{ fontSize: '1.2rem' }}>
               {overview}
             </p>

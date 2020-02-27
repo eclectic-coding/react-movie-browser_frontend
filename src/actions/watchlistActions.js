@@ -9,7 +9,4 @@ export const getWatchlist = userId => {
         dispatch({ type: GET_WATCHLIST, payload: watchlists })
       })
   }
-  // const userId = currentUser.data.id
-  // // dispatch({ type: GET_WATCHLIST, payload: state })
-  // console.log(userId)
 }
