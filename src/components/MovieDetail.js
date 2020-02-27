@@ -1,11 +1,15 @@
 import React from 'react'
 import genreMap from '../data/movieGenres'
 // Styling Components
-import { Badge, Container } from 'react-bootstrap'
+import { Badge, Button, Container } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock, faHistory, faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBookmark,
+  faClock,
+  faHistory,
+  faMoneyBillAlt
+} from '@fortawesome/free-solid-svg-icons'
 import { MOVIE_DB_IMAGE_URL } from '../data/apiMovies'
-import WatchlistButton from './WatchlistButton'
 
 const MovieDetail = ({
   movie,
@@ -62,7 +66,13 @@ const MovieDetail = ({
               <div title="Rating" className="movie__rating">
                 {average_vote}
               </div>
-              <WatchlistButton movie={movie} />
+              <Button
+                variant="success"
+                id="watchlist-btn"
+                onClick={e => this.handleWatchlistClick(e)}
+              >
+                <FontAwesomeIcon icon={faBookmark} className="mr-2" /> Add to my Watchlist
+              </Button>
             </div>
             <p className="my-5" style={{ fontSize: '1.2rem' }}>
               {overview}
@@ -80,18 +90,17 @@ const MovieDetail = ({
             <div className="movie__stat d-flex justify-content-between align-items center">
               {release_date && (
                 <div>
-                  <FontAwesomeIcon icon={faClock} className="mr-2" />
-                  Release date: {release_date.toLocaleString()}
+                  <FontAwesomeIcon icon={faClock} className="mr-2" /> Release date:
+                  {release_date.toLocaleString()}
                 </div>
               )}
               <div>
-                <FontAwesomeIcon icon={faHistory} className="mr-2" />
-                Duration:
+                <FontAwesomeIcon icon={faHistory} className="mr-2" /> Duration:
                 {getDurationStr(runtime)}
               </div>
               <div>
-                <FontAwesomeIcon icon={faMoneyBillAlt} className="mr-2" />
-                Budget: ${budget.toLocaleString()}
+                <FontAwesomeIcon icon={faMoneyBillAlt} className="mr-2" /> Budget: $
+                {budget.toLocaleString()}
               </div>
             </div>
           </div>
