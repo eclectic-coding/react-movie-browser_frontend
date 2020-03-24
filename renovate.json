@@ -1,8 +1,25 @@
 {
-  "extends": ["config:base"],
-  "automerge": true,
-  "major": {
-    "automerge": false
-  },
-  "schedule": "before 2am"
+  "extends": [
+    "config:base",
+    "schedule:nonOfficeHours"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ],
+  "nonOfficeHours": {
+    "description": "Schedule for typical non-office hours (night time and weekends)",
+    "schedule": [
+      "after 10pm every weekday",
+      "before 5am every weekday",
+      "every weekend"
+    ]
+  }
 }
