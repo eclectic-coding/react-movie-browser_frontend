@@ -1,4 +1,4 @@
-import { SET_MOVIES, GET_MOVIE, SEARCH_MOVIES, GET_WATCHLIST } from './actionTypes'
+import { SET_MOVIES, GET_MOVIE } from './actionTypes'
 
 export const fetchMovies = () => {
   return dispatch => {

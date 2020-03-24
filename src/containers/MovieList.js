@@ -11,30 +11,34 @@ import { Button, ButtonGroup, Container, FormControl } from 'react-bootstrap'
 class MovieList extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      stateStart: this.props.initialStart,
+      stateOffset: this.props.initialOffset
+    }
+    // console.log(this.state.stateStart, this.state.stateOffset)
   }
 
   componentDidMount() {
     this.props.fetchMovies()
   }
 
-  handleOnPageClick = data => {
-    let selected = data.selected + 1
-    console.log(selected)
-    let offset = Math.ceil(selected * 20)
-    console.log(offset)
-    console.log(this.props.movies)
-    const movies = this.props.movies
-      .slice(data.selected * 20, offset)
+  loadMovieGrid = (start, offset) => {
+    return this.props.movies
+      .slice(start, offset)
       .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
-    console.log(movies)
+  }
+
+  handleOnPageChange = data => {
+    let selected = data.selected + 1
+    let newOffset = Math.ceil(selected * 20)
+    const moviePocket = document.getElementById('movie-container')
+    // moviePocket.remove()
+    console.log(selected, newOffset)
+    // this.loadMovieGrid(newOffset - 20, newOffset)
   }
 
   render() {
-    // const pageCount = Math.ceil(this.props.movies.length / 20)
-    console.log(this.props.pageCount)
-    const movies = this.props.movies
-      .slice(0, 20)
-      .map((movie, index) => <MovieCard key={movie.id} movie={movie} {...movie} />)
     return (
       <div className="bg-danger background__cover">
         <Container style={{ paddingTop: '2rem' }}>
@@ -62,7 +66,8 @@ class MovieList extends Component {
             id="movie-container"
             className="d-flex flex-wrap justify-content-md-between justify-content-center"
           >
-            {movies}
+            {/*TODO - Migrate to state*/}
+            {this.loadMovieGrid(this.props.initialStart, this.props.initialOffset)}
           </div>
 
           <div className="d-flex flex-wrap justify-content-center py-5">
@@ -74,7 +79,7 @@ class MovieList extends Component {
               pageCount={this.props.pageCount}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
-              onPageChange={this.handleOnPageClick}
+              onPageChange={this.handleOnPageChange}
               disableInitialCallback={true}
               containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}
@@ -88,10 +93,11 @@ class MovieList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     movies: state.movies,
-    pageCount: Math.ceil(state.movies.length / 20)
+    pageCount: Math.ceil(state.movies.length / 20),
+    initialStart: 0,
+    initialOffset: 20
   }
 }
 

@@ -7,7 +7,6 @@ import { MOVIE_DB_IMAGE_URL } from '../data/apiMovies'
 import noPhoto from '../assets/images/noimage.png'
 
 const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
-  let idStr = id.toString(8)
   let genresStr = ''
   if (genre_ids) {
     genresStr = genre_ids
@@ -19,8 +18,8 @@ const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
   }
   return (
     <div>
-      <Card className="movie-card" id={idStr}>
-        <Link to={`/movies/${idStr}`}>
+      <Card className="movie-card" id={id}>
+        <Link to={`/movies/${id}`}>
           <CardImg
             top
             width="100%"
@@ -29,7 +28,7 @@ const MovieCard = ({ id, title, genre_ids, poster_path, average_vote }) => {
           />
         </Link>
         <Card.Body>
-          <Link to={`/movies/${idStr}`}>
+          <Link to={`/movies/${id}`}>
             {average_vote > 0 && <span className="card-rating">{average_vote}</span>}
             <h6 className="mb-1 mr-4">{title}</h6>
             {genresStr && <p className="small mb-0">{genresStr}</p>}

@@ -10,6 +10,7 @@ import {
   faMoneyBillAlt
 } from '@fortawesome/free-solid-svg-icons'
 import { MOVIE_DB_IMAGE_URL } from '../data/apiMovies'
+import { SET_MOVIES } from '../actions/actionTypes'
 
 const MovieDetail = ({
   movie,
