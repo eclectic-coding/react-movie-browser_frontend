@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    "schedule:nonOfficeHours"
+    "schedule: ["after 10pm and before 5:00am", "every weekend"]
   ],
   "packageRules": [
     {
@@ -14,12 +14,4 @@
       "automerge": true
     }
   ],
-  "nonOfficeHours": {
-    "description": "Schedule for typical non-office hours (night time and weekends)",
-    "schedule": [
-      "after 10pm every weekday",
-      "before 5am every weekday",
-      "every weekend"
-    ]
-  }
 }
