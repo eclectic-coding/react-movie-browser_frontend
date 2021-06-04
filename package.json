@@ -12,14 +12,6 @@
     "lint": "eslint src/**/*.js",
     "prettify": "prettier src/**/*.js --write"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "npm run lint:fix"
-  },
   "browserslist": {
     "production": [
       ">0.5%",
